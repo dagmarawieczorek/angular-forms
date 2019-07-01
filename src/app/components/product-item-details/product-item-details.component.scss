@@ -1,0 +1,23 @@
+.product-details {
+
+  width: 800px;
+
+  .dialog-header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  mat-form-field {
+    width: 100%;
+  }
+
+  .images-container {
+    display: flex;
+
+    .image {
+      margin: 16px;
+      width: 200px;
+      height: 200px;
+    }
+  }
+}

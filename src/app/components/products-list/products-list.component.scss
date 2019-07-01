@@ -1,0 +1,10 @@
+@import '../../variables.scss';
+
+.product-list-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 24px;
+  background-color: $almost-white;
+}

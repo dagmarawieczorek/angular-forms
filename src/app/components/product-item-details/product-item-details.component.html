@@ -1,0 +1,69 @@
+<div class="product-details">
+
+  <div mat-dialog-title class="dialog-header">
+
+    <h4>{{editmode?'Edit':'View'}} product</h4>
+    <button mat-button mat-dialog-close>X</button>
+  </div>
+
+  <div *ngIf="!editmode" class="dialog-content">
+    <h5>name</h5>
+    <span>
+      {{data.name}}
+    </span>
+    <h5>number</h5>
+    <span>
+      {{data.number}}
+    </span>
+
+    <h5>description</h5>
+    <span>
+      {{data.description}}
+    </span>
+    <div *ngIf="data.images.length>0">
+      <h5>images</h5>
+      <div class="images-container">
+        <div class="image" *ngFor="let image of data.images">
+          <img src="{{image.url}}">
+        </div>
+      </div>
+    </div>
+    <mat-dialog-actions>
+      <button mat-button (click)="toggleEditMode()">Edit</button>
+    </mat-dialog-actions>
+
+  </div>
+
+  <div *ngIf="editmode" class="dialog-content">
+
+    <h5>name</h5>
+    <mat-form-field>
+      <input matInput [(ngModel)]="data.name">
+    </mat-form-field>
+
+    <h5>number</h5>
+    <mat-form-field>
+      <input matInput [(ngModel)]="data.number">
+    </mat-form-field>
+
+    <h5>description</h5>
+    <mat-form-field>
+      <textarea matInput [(ngModel)]="data.description"></textarea>
+    </mat-form-field>
+
+    <div *ngIf="data.images.length>0">
+      <h5>images</h5>
+      <div class="images-container">
+        <div class="image" *ngFor="let image of data.images">
+          <img src="{{image.url}}">
+          <mat-form-field>
+            <input matInput [(ngModel)]="image.url">
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <mat-dialog-actions>
+      <button mat-button (click)="saveProduct()">Save</button>
+    </mat-dialog-actions>
+  </div>
+</div>
