@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Inject } from "@angular/core";
-import { Product } from "src/app/models/product.model";
+import { Product, Image } from "src/app/models/product.model";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
-import { ProductListService } from 'src/app/services/product-list.service';
+import { ProductListService } from "src/app/services/product-list.service";
 
 @Component({
   selector: "app-product-item-details",
@@ -17,6 +17,15 @@ export class ProductItemDetailsComponent implements OnInit {
 
   editmode = false;
   ngOnInit() {}
+
+  newImage() {
+    const img = new Image();
+    this.data.images.push(img);
+  }
+
+  removeImage(image) {
+    this.data.images = this.data.images.filter(item => item !== image);
+  }
 
   toggleEditMode() {
     this.editmode = !this.editmode;

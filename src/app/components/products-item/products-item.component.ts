@@ -16,12 +16,8 @@ export class ProductsItemComponent implements OnInit {
 
   openDialog(product): void {
     const dialogConfig = new MatDialogConfig();
-
-    // dialogConfig.disableClose = true;
-    // dialogConfig.autoFocus = true;
-
     dialogConfig.data = product;
-
+    dialogConfig.height = "90vh";
     this.dialog.open(ProductItemDetailsComponent, dialogConfig);
   }
 }

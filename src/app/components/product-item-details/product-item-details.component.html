@@ -24,40 +24,49 @@
       <h5>images</h5>
       <div class="images-container">
         <div class="image" *ngFor="let image of data.images">
-          <img src="{{image.url}}">
+          <a href="{{image.url}}" title="Open image in new tab" target="blank">
+            <img src="{{image.url}}">
+          </a>
+
         </div>
       </div>
     </div>
     <mat-dialog-actions>
       <button mat-button (click)="toggleEditMode()">Edit</button>
     </mat-dialog-actions>
-
   </div>
 
   <div *ngIf="editmode" class="dialog-content">
-
-    <h5>name</h5>
+    <h5>Name</h5>
     <mat-form-field>
-      <input matInput [(ngModel)]="data.name">
+      <input matInput placeholder="Type in name" [(ngModel)]="data.name">
     </mat-form-field>
 
-    <h5>number</h5>
+    <h5>Number</h5>
     <mat-form-field>
-      <input matInput [(ngModel)]="data.number">
+      <input matInput placeholder="Type in number" [(ngModel)]="data.number">
     </mat-form-field>
 
-    <h5>description</h5>
+    <h5>Description</h5>
     <mat-form-field>
-      <textarea matInput [(ngModel)]="data.description"></textarea>
+      <textarea matInput placeholder="Type in description" [(ngModel)]="data.description"></textarea>
     </mat-form-field>
 
     <div *ngIf="data.images.length>0">
-      <h5>images</h5>
+      <div class="images-header">
+        <h5>Images</h5>
+        <button mat-button (click)="newImage()"> Add new image
+          <mat-icon>add_circle_outline</mat-icon>
+        </button>
+      </div>
       <div class="images-container">
         <div class="image" *ngFor="let image of data.images">
-          <img src="{{image.url}}">
+          <mat-icon class="remove-button" (click)="removeImage(image)">delete</mat-icon>
+          <a href="{{image.url}}" target="blank">
+            <img src="{{image.url}}">
+          </a>
           <mat-form-field>
-            <input matInput [(ngModel)]="image.url">
+            <input matInput placeholder="Image URL" [(ngModel)]="image.url">
           </mat-form-field>
         </div>
       </div>
