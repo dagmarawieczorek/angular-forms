@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Inject } from "@angular/core";
 import { Product } from "src/app/models/product.model";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
+import { ProductListService } from 'src/app/services/product-list.service';
 
 @Component({
   selector: "app-product-item-details",
@@ -10,7 +11,8 @@ import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 export class ProductItemDetailsComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<ProductItemDetailsComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Product
+    @Inject(MAT_DIALOG_DATA) public data: Product,
+    private productListService: ProductListService
   ) {}
 
   editmode = false;
@@ -21,6 +23,7 @@ export class ProductItemDetailsComponent implements OnInit {
   }
 
   saveProduct() {
+    this.productListService.updateProduct(this.data);
     this.toggleEditMode();
   }
 }
