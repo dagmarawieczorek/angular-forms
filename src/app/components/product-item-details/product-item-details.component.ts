@@ -1,12 +1,12 @@
-import { Component, OnInit, Input, Inject } from "@angular/core";
-import { Product, Image } from "src/app/models/product.model";
-import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
-import { ProductListService } from "src/app/services/product-list.service";
+import { Component, OnInit, Input, Inject } from '@angular/core';
+import { Product, Image } from 'src/app/models/product.model';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ProductListService } from 'src/app/services/product-list.service';
 
 @Component({
-  selector: "app-product-item-details",
-  templateUrl: "./product-item-details.component.html",
-  styleUrls: ["./product-item-details.component.scss"]
+  selector: 'app-product-item-details',
+  templateUrl: './product-item-details.component.html',
+  styleUrls: ['./product-item-details.component.scss']
 })
 export class ProductItemDetailsComponent implements OnInit {
   constructor(
@@ -15,24 +15,6 @@ export class ProductItemDetailsComponent implements OnInit {
     private productListService: ProductListService
   ) {}
 
-  editmode = false;
   ngOnInit() {}
 
-  newImage() {
-    const img = new Image();
-    this.data.images.push(img);
-  }
-
-  removeImage(image) {
-    this.data.images = this.data.images.filter(item => item !== image);
-  }
-
-  toggleEditMode() {
-    this.editmode = !this.editmode;
-  }
-
-  saveProduct() {
-    this.productListService.updateProduct(this.data);
-    this.toggleEditMode();
-  }
 }

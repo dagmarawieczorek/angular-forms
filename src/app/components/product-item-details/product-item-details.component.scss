@@ -25,9 +25,6 @@
     .images-container {
       display: flex;
       flex-wrap: wrap;
-
-
-
       .image {
         display: flex;
         flex-direction: column;
@@ -35,10 +32,9 @@
         position: relative;
 
         .remove-button {
-          cursor: pointer;
-          padding: 12px;
           position: absolute;
-          background-color: $almost-white-semi-transparent;
+          border-radius: 50%;
+          background-color: rgba(white, 0.8);
         }
 
         img {

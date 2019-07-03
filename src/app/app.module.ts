@@ -14,12 +14,16 @@ import {
 } from "@angular/material";
 import { MatDialogModule, MatDialogRef } from "@angular/material/dialog";
 import { FormsModule } from "@angular/forms";
+import { ProductFormComponent } from './components/product-form/product-form.component';
+import { HeaderComponent } from './components/header/header.component';
 @NgModule({
   declarations: [
     AppComponent,
     ProductsListComponent,
     ProductsItemComponent,
-    ProductItemDetailsComponent
+    ProductItemDetailsComponent,
+    ProductFormComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

@@ -2,11 +2,13 @@
 
   <div mat-dialog-title class="dialog-header">
 
-    <h4>{{editmode?'Edit':'View'}} product</h4>
-    <button mat-button mat-dialog-close>X</button>
+    <h4>{{productListService.editmode?'Edit':'View'}} product</h4>
+    <button mat-icon-button color="primary" mat-dialog-close>
+      <mat-icon>close</mat-icon>
+    </button>
   </div>
 
-  <div *ngIf="!editmode" class="dialog-content">
+  <div *ngIf="!productListService.editmode" class="dialog-content">
     <h5>name</h5>
     <span>
       {{data.name}}
@@ -32,47 +34,11 @@
       </div>
     </div>
     <mat-dialog-actions>
-      <button mat-button (click)="toggleEditMode()">Edit</button>
+      <button mat-raised-button (click)="productListService.toggleEditMode()">Edit</button>
     </mat-dialog-actions>
   </div>
 
-  <div *ngIf="editmode" class="dialog-content">
-    <h5>Name</h5>
-    <mat-form-field>
-      <input matInput placeholder="Type in name" [(ngModel)]="data.name">
-    </mat-form-field>
-
-    <h5>Number</h5>
-    <mat-form-field>
-      <input matInput placeholder="Type in number" [(ngModel)]="data.number">
-    </mat-form-field>
-
-    <h5>Description</h5>
-    <mat-form-field>
-      <textarea matInput placeholder="Type in description" [(ngModel)]="data.description"></textarea>
-    </mat-form-field>
-
-    <div *ngIf="data.images.length>0">
-      <div class="images-header">
-        <h5>Images</h5>
-        <button mat-button (click)="newImage()"> Add new image
-          <mat-icon>add_circle_outline</mat-icon>
-        </button>
-      </div>
-      <div class="images-container">
-        <div class="image" *ngFor="let image of data.images">
-          <mat-icon class="remove-button" (click)="removeImage(image)">delete</mat-icon>
-          <a href="{{image.url}}" target="blank">
-            <img src="{{image.url}}">
-          </a>
-          <mat-form-field>
-            <input matInput placeholder="Image URL" [(ngModel)]="image.url">
-          </mat-form-field>
-        </div>
-      </div>
-    </div>
-    <mat-dialog-actions>
-      <button mat-button (click)="saveProduct()">Save</button>
-    </mat-dialog-actions>
+  <div *ngIf="productListService.editmode" class="dialog-content">
+    <app-product-form [product]="data"></app-product-form>
   </div>
 </div>

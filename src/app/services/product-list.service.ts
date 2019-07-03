@@ -8,14 +8,32 @@ import { HttpClient } from "@angular/common/http";
 })
 export class ProductListService {
   productsUrl = "http://localhost:3000/products";
+  editmode = false;
+  products: Array<Product>;
 
   constructor(private http: HttpClient) {}
 
-  getProducts(): Observable<Array<Product>> {
-    return this.http.get<Array<Product>>(this.productsUrl);
+  getProducts() {
+    this.http
+      .get<Array<Product>>(this.productsUrl)
+      .subscribe(products => (this.products = products));
   }
 
-  updateProduct(data) {
-    this.http.put(`${this.productsUrl}/${data.id}`, data).subscribe();
+  saveProduct(data) {
+    if (this.products.find(item => item.id === data.id) === undefined) {
+      this.http.post(this.productsUrl, data).subscribe();
+      this.products.push(data);
+    } else {
+      this.http.put(`${this.productsUrl}/${data.id}`, data).subscribe();
+    }
+    this.toggleEditMode();
+  }
+
+  deleteProduct(productId) {
+    this.http.delete(`${this.productsUrl}/${productId}`).subscribe();
+  }
+
+  toggleEditMode() {
+    this.editmode = !this.editmode;
   }
 }
