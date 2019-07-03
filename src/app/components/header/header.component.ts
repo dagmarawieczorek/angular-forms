@@ -20,7 +20,7 @@ export class HeaderComponent implements OnInit {
 
   createNewProduct() {
     const product: Product = {
-      id: Guid.raw(),
+      id: null,
       name: "",
       number: "",
       description: "",

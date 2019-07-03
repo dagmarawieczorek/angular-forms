@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { Product } from "../models/product.model";
 import { HttpClient } from "@angular/common/http";
+import { MatDialog } from "@angular/material";
 
 @Injectable({
   providedIn: "root"
@@ -9,9 +10,9 @@ import { HttpClient } from "@angular/common/http";
 export class ProductListService {
   productsUrl = "http://localhost:3000/products";
   editmode = false;
-  products: Array<Product>;
+  products: any;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, public dialog: MatDialog) {}
 
   getProducts() {
     this.http
@@ -21,8 +22,9 @@ export class ProductListService {
 
   saveProduct(data) {
     if (this.products.find(item => item.id === data.id) === undefined) {
-      this.http.post(this.productsUrl, data).subscribe();
-      this.products.push(data);
+      this.http
+        .post(this.productsUrl, data)
+        .subscribe(resp => this.products.push(resp));
     } else {
       this.http.put(`${this.productsUrl}/${data.id}`, data).subscribe();
     }
@@ -30,7 +32,12 @@ export class ProductListService {
   }
 
   deleteProduct(productId) {
-    this.http.delete(`${this.productsUrl}/${productId}`).subscribe();
+    this.http.delete(`${this.productsUrl}/${productId}`).subscribe(_ => {
+      this.products = this.products.filter(item => {
+        return item.id !== productId;
+      });
+      this.dialog.closeAll();
+    });
   }
 
   toggleEditMode() {
