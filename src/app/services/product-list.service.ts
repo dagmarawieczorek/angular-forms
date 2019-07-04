@@ -15,7 +15,7 @@ export class ProductListService {
   constructor(
     private http: HttpClient,
     public dialog: MatDialog,
-    private _snackBar: MatSnackBar
+    private snackBar: MatSnackBar
   ) {}
 
   getProducts() {
@@ -69,7 +69,7 @@ export class ProductListService {
   }
 
   showSnackBar(message: string) {
-    this._snackBar.open(message, "OK", {
+    this.snackBar.open(message, "OK", {
       duration: 2000
     });
   }

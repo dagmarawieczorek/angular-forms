@@ -1,6 +1,7 @@
 .images-header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .images-container {
@@ -8,9 +9,8 @@
   flex-wrap: wrap;
 
   .image {
-    display: flex;
-    flex-direction: column;
-    margin: 16px;
+    display: block;
+    margin: 8px;
     position: relative;
 
     .remove-button {
@@ -19,9 +19,24 @@
       background-color: rgba(white, 0.8);
     }
 
+    mat-card {
+      display: block;
+    }
+
     img {
       height: 160px;
       width: auto;
     }
   }
+}
+
+.mat-form-field {
+  display: block;
+  margin-top: 10px;
+}
+
+.submit-container {
+  display: flex;
+  justify-content: flex-end;
+  padding: 36px 0;
 }

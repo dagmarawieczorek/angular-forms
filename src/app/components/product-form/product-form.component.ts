@@ -1,11 +1,11 @@
-import { Component, OnInit, Input } from "@angular/core";
-import { Product, Image } from "src/app/models/product.model";
-import { ProductListService } from "src/app/services/product-list.service";
+import { Component, OnInit, Input } from '@angular/core';
+import { Product, Image } from 'src/app/models/product.model';
+import { ProductListService } from 'src/app/services/product-list.service';
 
 @Component({
-  selector: "app-product-form",
-  templateUrl: "./product-form.component.html",
-  styleUrls: ["./product-form.component.scss"]
+  selector: 'app-product-form',
+  templateUrl: './product-form.component.html',
+  styleUrls: ['./product-form.component.scss']
 })
 export class ProductFormComponent implements OnInit {
   constructor(private productListService: ProductListService) {}

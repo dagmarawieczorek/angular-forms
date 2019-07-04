@@ -17,18 +17,24 @@
   </button>
 </div>
 <div class="images-container">
-  <div class="image" *ngFor="let image of product.images">
-    <button mat-icon-button color="primary" class="remove-button" (click)="removeImage(image)">
-      <mat-icon>delete</mat-icon>
-    </button>
-    <a href="{{image.url}}" target="blank">
-      <img src="{{image.url}}">
-    </a>
-    <mat-form-field>
-      <input matInput placeholder="Image URL" [(ngModel)]="image.url">
-    </mat-form-field>
+  <div *ngFor="let image of product.images">
+    <mat-card class="image">
+      <button mat-icon-button color="primary" class="remove-button" (click)="removeImage(image)">
+        <mat-icon>delete</mat-icon>
+      </button>
+      <a href="{{image.url}}" target="blank">
+        <img src="{{image.url}}">
+      </a>
+      <mat-form-field>
+        <input matInput placeholder="Image URL" [(ngModel)]="image.url">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Image name" [(ngModel)]="image.name">
+      </mat-form-field>
+    </mat-card>
+
   </div>
 </div>
-<mat-dialog-actions>
+<div class="submit-container">
   <button mat-raised-button color="primary" (click)="saveProduct()">Save</button>
-</mat-dialog-actions>
+</div>

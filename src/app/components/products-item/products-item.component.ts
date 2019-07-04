@@ -1,13 +1,13 @@
-import { Component, OnInit, Input } from "@angular/core";
-import { Product } from "src/app/models/product.model";
-import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
-import { ProductItemDetailsComponent } from "../product-item-details/product-item-details.component";
-import { ProductListService } from "src/app/services/product-list.service";
+import { Component, OnInit, Input } from '@angular/core';
+import { Product } from 'src/app/models/product.model';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { ProductItemDetailsComponent } from '../product-item-details/product-item-details.component';
+import { ProductListService } from 'src/app/services/product-list.service';
 
 @Component({
-  selector: "app-products-item",
-  templateUrl: "./products-item.component.html",
-  styleUrls: ["./products-item.component.scss"]
+  selector: 'app-products-item',
+  templateUrl: './products-item.component.html',
+  styleUrls: ['./products-item.component.scss']
 })
 export class ProductsItemComponent implements OnInit {
   @Input() product: Product;
@@ -21,7 +21,8 @@ export class ProductsItemComponent implements OnInit {
   openDialog(product): void {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = product;
-    dialogConfig.height = "90vh";
+    dialogConfig.height = '90vh';
+    this.productListService.editmode = false;
     this.dialog.open(ProductItemDetailsComponent, dialogConfig);
   }
 }

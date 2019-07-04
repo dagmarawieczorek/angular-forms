@@ -17,4 +17,11 @@ export class ProductItemDetailsComponent implements OnInit {
 
   ngOnInit() {}
 
+  getProductActionName() {
+    return this.data.id === null
+      ? 'Add'
+      : this.productListService.editmode
+      ? 'Edit'
+      : 'View';
+  }
 }
