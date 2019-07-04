@@ -2,20 +2,17 @@
 <mat-form-field>
   <input matInput placeholder="Type in name" [(ngModel)]="product.name">
 </mat-form-field>
-
 <h5>Number</h5>
 <mat-form-field>
   <input matInput placeholder="Type in number" [(ngModel)]="product.number">
 </mat-form-field>
-
 <h5>Description</h5>
 <mat-form-field>
   <textarea matInput placeholder="Type in description" [(ngModel)]="product.description"></textarea>
 </mat-form-field>
-
 <div class="images-header">
   <h5>Images</h5>
-  <button mat-raised-button (click)="newImage()"> Add new image
+  <button mat-raised-button color="primary" (click)="newImage()"> Add new image
     <mat-icon>add_circle_outline</mat-icon>
   </button>
 </div>
@@ -24,7 +21,6 @@
     <button mat-icon-button color="primary" class="remove-button" (click)="removeImage(image)">
       <mat-icon>delete</mat-icon>
     </button>
-
     <a href="{{image.url}}" target="blank">
       <img src="{{image.url}}">
     </a>
@@ -34,7 +30,5 @@
   </div>
 </div>
 <mat-dialog-actions>
-  <button mat-raised-button (click)="productListService.deleteProduct(product.id)">Delete</button>
-
-  <button mat-raised-button (click)="saveProduct()">Save</button>
+  <button mat-raised-button color="primary" (click)="saveProduct()">Save</button>
 </mat-dialog-actions>

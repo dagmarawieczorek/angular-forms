@@ -18,7 +18,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {}
 
-  createNewProduct() {
+  addProduct() {
     const product: Product = {
       id: null,
       name: "",

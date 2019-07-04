@@ -10,12 +10,14 @@ import {
   MatCardModule,
   MatButtonModule,
   MatIconModule,
-  MatInputModule
+  MatInputModule,
+  MatListModule,
+  MatSnackBarModule
 } from "@angular/material";
 import { MatDialogModule, MatDialogRef } from "@angular/material/dialog";
 import { FormsModule } from "@angular/forms";
-import { ProductFormComponent } from './components/product-form/product-form.component';
-import { HeaderComponent } from './components/header/header.component';
+import { ProductFormComponent } from "./components/product-form/product-form.component";
+import { HeaderComponent } from "./components/header/header.component";
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +36,9 @@ import { HeaderComponent } from './components/header/header.component';
     MatButtonModule,
     MatIconModule,
     MatInputModule,
-    FormsModule
+    FormsModule,
+    MatListModule,
+    MatSnackBarModule
   ],
   entryComponents: [ProductItemDetailsComponent],
   providers: [{ provide: MatDialogRef, useValue: {} }],

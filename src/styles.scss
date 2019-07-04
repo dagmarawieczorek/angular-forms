@@ -1,8 +1,24 @@
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
 @import 'app/variables.scss';
-@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 
 
 body {
   background: $grey-light;
   font-family: 'Roboto', sans-serif;
+}
+
+h2,
+h3,
+h4,
+h5 {
+  color: $accent;
+  font-weight: 400;
+}
+
+
+.mat-icon-button {
+  &:hover {
+    color: $warn;
+    transition: 0.2s;
+  }
 }

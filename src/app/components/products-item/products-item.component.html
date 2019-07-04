@@ -1,5 +1,8 @@
-<li (click)="openDialog(product)">
-  <mat-card class="product-card">
-    <h3>{{product.name}}</h3>
-  </mat-card>
-</li>
+<mat-list-item class="product-item">
+  <div class="product-item-labels">
+    <span (click)="openDialog(product)">{{product.name}}</span>
+    <button mat-icon-button color="primary" (click)="productListService.deleteProduct(product.id)">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+</mat-list-item>

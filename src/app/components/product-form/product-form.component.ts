@@ -28,7 +28,6 @@ export class ProductFormComponent implements OnInit {
   }
 
   saveProduct() {
-    console.log(this.product);
     this.productListService.saveProduct(this.product);
   }
 }

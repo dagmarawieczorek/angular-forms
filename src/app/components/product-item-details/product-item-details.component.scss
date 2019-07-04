@@ -4,18 +4,19 @@
 
   width: 740px;
 
-
   .dialog-header {
     display: flex;
     justify-content: space-between;
+    color: $deep-blue;
+    align-items: center;
   }
 
-  mat-form-field {
-    display: inline-block;
-  }
-
-  .dialog-content {
+  .preview-content {
     padding: 0 48px 48px 48px;
+
+    .product-content {
+      padding: 48px;
+    }
 
     .images-header {
       display: flex;
@@ -46,4 +47,7 @@
     }
   }
 
+  .edit-content {
+    padding: 48px;
+  }
 }

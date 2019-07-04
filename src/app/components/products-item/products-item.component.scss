@@ -1,9 +1,42 @@
-.product-card {
-  width: 500px;
-  margin: 8px;
-  cursor: pointer;
+@import '../../variables.scss';
 
-  button {
-    width: 100%;
+.product-item {
+  cursor: pointer;
+  transition: 0.2s;
+  border-bottom: 1px solid $accent;
+
+  .product-item-labels {
+    display: flex;
+    width: 400px;
+    flex: 1;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+
+    &::before {
+      position: absolute;
+      content: '';
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: $accent;
+      left: -10px;
+    }
+
+    span {
+      padding: 12px;
+      width: 380px;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    button {
+      width: 40px;
+    }
+  }
+
+  &:hover {
+    background-color: rgba($accent, 0.2);
+    font-weight: bold;
   }
 }
