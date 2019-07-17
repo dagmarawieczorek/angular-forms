@@ -10,7 +10,7 @@ import { MatDialog, MatSnackBar } from "@angular/material";
 export class ProductListService {
   productsUrl = "http://localhost:3000/products";
   editmode = false;
-  products: any;
+  products: Array<any>;
 
   constructor(
     private http: HttpClient,
@@ -30,7 +30,7 @@ export class ProductListService {
         resp => {
           this.products.push(resp);
           this.showSnackBar("Product was added");
-          this.dialog.closeAll();
+          this.closeDialogs();
         },
         error => {
           this.showSnackBar(error.error.message);
@@ -40,13 +40,15 @@ export class ProductListService {
       this.http.put(`${this.productsUrl}/${data.id}`, data).subscribe(
         _ => {
           this.showSnackBar("Product was updated");
+          this.toggleEditMode();
+          this.closeDialogs();
+          this.getProducts();
         },
         error => {
           this.showSnackBar(error.error.message);
         }
       );
     }
-    this.toggleEditMode();
   }
 
   deleteProduct(productId) {
@@ -55,7 +57,7 @@ export class ProductListService {
         this.products = this.products.filter(item => {
           return item.id !== productId;
         });
-        this.dialog.closeAll();
+        this.closeDialogs();
         this.showSnackBar("Product was deleted");
       },
       error => {
@@ -72,5 +74,9 @@ export class ProductListService {
     this.snackBar.open(message, "OK", {
       duration: 2000
     });
+  }
+
+  closeDialogs() {
+    this.dialog.closeAll();
   }
 }

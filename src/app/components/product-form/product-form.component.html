@@ -1,14 +1,14 @@
 <h5>Name</h5>
 <mat-form-field>
-  <input matInput placeholder="Type in name" [(ngModel)]="product.name">
+  <input matInput placeholder="Type in name" [(ngModel)]="workingProductCopy.name">
 </mat-form-field>
 <h5>Number</h5>
 <mat-form-field>
-  <input matInput placeholder="Type in number" [(ngModel)]="product.number">
+  <input matInput placeholder="Type in number" [(ngModel)]="workingProductCopy.number">
 </mat-form-field>
 <h5>Description</h5>
 <mat-form-field>
-  <textarea matInput placeholder="Type in description" [(ngModel)]="product.description"></textarea>
+  <textarea matInput placeholder="Type in description" [(ngModel)]="workingProductCopy.description"></textarea>
 </mat-form-field>
 <div class="images-header">
   <h5>Images</h5>
@@ -17,7 +17,7 @@
   </button>
 </div>
 <div class="images-container">
-  <div *ngFor="let image of product.images">
+  <div *ngFor="let image of workingProductCopy.images">
     <mat-card class="image">
       <button mat-icon-button color="primary" class="remove-button" (click)="removeImage(image)">
         <mat-icon>delete</mat-icon>
