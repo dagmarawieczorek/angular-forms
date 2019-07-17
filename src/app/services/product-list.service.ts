@@ -10,7 +10,7 @@ import { MatDialog, MatSnackBar } from "@angular/material";
 export class ProductListService {
   productsUrl = "http://localhost:3000/products";
   editmode = false;
-  products: Array<any>;
+  products: Array<Product>;
 
   constructor(
     private http: HttpClient,
@@ -28,7 +28,7 @@ export class ProductListService {
     if (this.products.find(item => item.id === data.id) === undefined) {
       this.http.post(this.productsUrl, data).subscribe(
         resp => {
-          this.products.push(resp);
+          this.products.push(resp as Product);
           this.showSnackBar("Product was added");
           this.closeDialogs();
         },
